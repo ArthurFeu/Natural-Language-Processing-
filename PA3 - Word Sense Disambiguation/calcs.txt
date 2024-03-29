@@ -1,0 +1,22 @@
+feature 	said
+phone 		1
+product 	4
+corpus		117
+
+A = P(phone/f) = 1/117
+B = P(product/f) = 4/117
+
+|log (A/B)|
+
+-----------------------------------------
+feature 	broader
+phone 		0
+product 	1
+corpus		1
+
+A = P(phone/f) = 0/1
+B = P(product/f) = 1/1
+
+|log (0/1)|
+
+?
