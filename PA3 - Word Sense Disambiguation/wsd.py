@@ -156,6 +156,7 @@ def rank_features_by_log_likelihood(word_counts, sense_word_counts):
     # I sorted alfabetically in case of ties to ensure to have the same output every time
     # Without this, the output can vary from 86.51% to 89.68%
     ranked_features_and_senses = sorted(scores_and_senses.items(), key=lambda item: (-item[1][0], item[0]))
+
     
     # Remove words with log_likelihood = 0
     ranked_features_and_senses = [feature for feature in ranked_features_and_senses if feature[1][1] > 0]
@@ -164,10 +165,7 @@ def rank_features_by_log_likelihood(word_counts, sense_word_counts):
 
 def predict_sense(context, ranked_features):
     # Split context into separeted words
-    words_in_context = context.lower().split()  # check the difference
-    words_in_context2 = set(re.findall(r'\w+', context.lower()))
-    # print(words_in_context)
-    # print(words_in_context2)
+    words_in_context = set(re.findall(r'\w+', context.lower()))
     
     sense_counts = {}
     for feature_data in ranked_features:
@@ -183,7 +181,6 @@ def predict_sense(context, ranked_features):
         
     # Iterate through ranked features and check if any feature exists in the context
     for feature, (score, log, sense) in ranked_features:
-        print(feature)
         if feature in words_in_context:
             # If feature is found in context, return the associated sense
             return sense
