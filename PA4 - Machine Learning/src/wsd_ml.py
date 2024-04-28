@@ -201,7 +201,7 @@ def predict_and_print_answers(test_contexts, model, vectorizer):
 
 def main():
     if len(sys.argv) < 3:
-        print("Usage: python3 wsd.py line-train.txt line-test.txt [OPTIONAL: ml-model] > my-line-answers.txt")
+        print("Usage: python3 wsd_ml.py line-train.txt line-test.txt [OPTIONAL: ml-model] > my-line-answers.txt")
         sys.exit(1)
 
     train_file = sys.argv[1]
